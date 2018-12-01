@@ -6,12 +6,15 @@
  
 using namespace std; 
 
-
-class Student
+class Group
+{
+public:
+string group;
+};
+class Student:public Group
 { 
 public:
 int  id; 
-string group;
 string surname;
 string name; 
 string adresa;
