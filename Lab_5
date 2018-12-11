@@ -1,0 +1,62 @@
+#include <iostream>
+#include <conio.h>
+ 
+using namespace std;
+const int con=0;
+class Figura
+{
+protected:
+    int x,y,ygol;
+public:
+    Figura(int xc=0,int yc=0){
+    x=xc;
+    y=yc;
+	}
+    int givex(){
+    return x;
+	}
+    int givey(){
+    return y;
+	}
+    int giveygol(){
+    return ygol;
+	}
+    void showcenter(){
+    cout<<"Coord center("<<x<<","<<y<<")\n";
+	}
+    int showFigure(){
+    cout<<"Coord center("<<x<<","<<y<<")\n";
+	}
+    void move(Figura &g){
+    hide();
+    x=g.givex();
+    y=g.givey();
+    showFigure();
+	}
+    void hide(){
+    cout<<"Delete this figure";showFigure();
+	}
+ 
+};
+class Circle:public Figura
+{
+    int xr,yr;
+public:
+    Circle(Figura &d,int radx, int rady):Figura (d)
+    {xr=radx;yr=rady;}
+    void showFigure()const {cout<<"Circle ("<<x<<","<<y<<","<<xr<<","<<yr<<")\n";}
+
+void CircleshowFigure()
+{
+     cout<<"Circle("<<x<<","<<y<<","<<xr<<","<<yr<<","<<")\n";
+}
+};
+int main()
+{
+    Figura A(2,3),B(5,7);
+    Circle C(A,4,5);
+    C.showFigure();A.showFigure();B.showFigure();
+    C.move(B);
+    getch();
+    return 0;
+}
